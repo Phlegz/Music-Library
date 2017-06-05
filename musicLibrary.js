@@ -7,21 +7,22 @@ function Library(name, creator) {
 function Playlist(name) {
   this.name = name;
   this.tracks = [];
-  this.overallRating = function(tracks) {
-    const ratings = this.tracks.map((track) => {
-      return track.rating;
-    });
-    const totalRating = ratings.reduce((a, b) => {return a + b;}, 0);
-    return totalRating/ratings.length;
-  }
+}
 
-  this.totalDuration = function(tracks) {
-    const lengths = this.tracks.map((track) => {
-      return track.length;
-    });
-    const totalLength = lengths.reduce((a, b) => {return a + b;}, 0);
-    return totalLength;
-  }
+Playlist.prototype.overallRating = function(tracks) {
+  const ratings = this.tracks.map((track) => {
+    return track.rating;
+  });
+  const totalRating = ratings.reduce((a, b) => {return a + b;}, 0);
+  return totalRating/ratings.length;
+}
+
+Playlist.prototype.totalDuration = function(tracks) {
+  const lengths = this.tracks.map((track) => {
+    return track.length;
+  });
+  const totalLength = lengths.reduce((a, b) => {return a + b;}, 0);
+  return totalLength;
 }
 
 function Track(title, rating, length) {
